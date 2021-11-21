@@ -10,8 +10,13 @@ echo "------------------------------"
 echo "Setting up pip."
 
 # Install pip
-#easy_install pip
-brew install brew-pip
+easy_install pip
+#brew install brew-pip
+## this assumes 'python' is aliased to the version of python you want to use.
+python -m ensurepip --upgrade
+
+# I don't know why this isn't done by default. maybe there is a good reason.
+ln -s /usr/local/bin/pip3 /usr/local/bin/pip
 
 
 ###############################################################################
@@ -89,6 +94,7 @@ pip install unittest2
 pip install seaborn
 pip install scikit-learn
 pip install "ipython[all]"
+pip install ipykernel
 pip install bokeh
 pip install Flask
 pip install sqlalchemy
@@ -105,6 +111,13 @@ echo "Installing IPython Notebook Default Profile"
 # Add the IPython profile
 mkdir -p ~/.ipython
 cp -r init/profile_default/ ~/.ipython/profile_default
+
+echo "-------------------------------"
+echo "Installing r language"
+brew install r
+brew install jupyter
+
+
 
 echo "------------------------------"
 echo "Script completed."
