@@ -11,6 +11,13 @@ echo "Setting up pip."
 
 # Install pip
 easy_install pip
+#brew install brew-pip
+## this assumes 'python' is aliased to the version of python you want to use.
+python -m ensurepip --upgrade
+
+# I don't know why this isn't done by default. maybe there is a good reason.
+ln -s /usr/local/bin/pip3 /usr/local/bin/pip
+
 
 ###############################################################################
 # Virtual Enviroments                                                         #
@@ -38,32 +45,32 @@ echo "source /usr/local/bin/virtualenvwrapper.sh" >> $EXTRA_PATH
 echo "" >> $BASH_PROFILE_PATH
 source $EXTRA_PATH
 
-###############################################################################
-# Python 2 Virtual Enviroment                                                 #
-###############################################################################
+# ###############################################################################
+# # Python 2 Virtual Enviroment                                                 #
+# ###############################################################################
 
-echo "------------------------------"
-echo "Setting up py2-data virtual environment."
+# echo "------------------------------"
+# echo "Setting up py2-data virtual environment."
 
-# Create a Python2 data environment
-mkvirtualenv py2-data
-workon py2-data
+# # Create a Python2 data environment
+# mkvirtualenv py2-data
+# workon py2-data
 
-# Install Python data modules
-pip install numpy
-pip install scipy
-pip install matplotlib
-pip install pandas
-pip install sympy
-pip install nose
-pip install unittest2
-pip install seaborn
-pip install scikit-learn
-pip install "ipython[all]"
-pip install bokeh
-pip install Flask
-pip install sqlalchemy
-pip install mysql-python
+# # Install Python data modules
+# pip install numpy
+# pip install scipy
+# pip install matplotlib
+# pip install pandas
+# pip install sympy
+# pip install nose
+# pip install unittest2
+# pip install seaborn
+# pip install scikit-learn
+# pip install "ipython[all]"
+# pip install bokeh
+# pip install Flask
+# pip install sqlalchemy
+# pip install mysql-python
 
 ###############################################################################
 # Python 3 Virtual Enviroment                                                 #
@@ -87,6 +94,7 @@ pip install unittest2
 pip install seaborn
 pip install scikit-learn
 pip install "ipython[all]"
+pip install ipykernel
 pip install bokeh
 pip install Flask
 pip install sqlalchemy
@@ -103,6 +111,22 @@ echo "Installing IPython Notebook Default Profile"
 # Add the IPython profile
 mkdir -p ~/.ipython
 cp -r init/profile_default/ ~/.ipython/profile_default
+
+echo "-------------------------------"
+echo "Installing r language"
+brew install r
+brew install pandoc # for R Markdown
+brew install librsvg 
+brew install homebrew/cask/basictex
+
+echo "in vscode's console you will need to run: "
+echo "install.packages(\"knitr\")"
+echo "install.packages(\"rmarkdown\")"
+
+
+echo "installing jupyter"
+brew install jupyter
+
 
 echo "------------------------------"
 echo "Script completed."
