@@ -172,6 +172,7 @@ brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch 
 
 # Install stuff I can't believe we haven't installed yet
 brew install openssl
+brew install libgit2
 
 # Remove outdated versions from the cellar.
 brew cleanup

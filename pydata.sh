@@ -115,8 +115,17 @@ cp -r init/profile_default/ ~/.ipython/profile_default
 echo "-------------------------------"
 echo "Installing r language"
 brew install r
-brew install jupyter
+brew install pandoc # for R Markdown
+brew install librsvg 
+brew install homebrew/cask/basictex
 
+echo "in vscode's console you will need to run: "
+echo "install.packages(\"knitr\")"
+echo "install.packages(\"rmarkdown\")"
+
+
+echo "installing jupyter"
+brew install jupyter
 
 
 echo "------------------------------"
