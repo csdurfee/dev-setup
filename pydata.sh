@@ -6,6 +6,12 @@
 # This script might be run with .dots, which uses elevated privileges
 sudo -K
 
+echo "-------------------------------"
+echo "setting up python3 as default"
+
+
+## this ^^^ needs to be set up before the virtualenvwrapper stuff will work right
+
 echo "------------------------------"
 echo "Setting up pip."
 
@@ -13,8 +19,7 @@ echo "Setting up pip."
 easy_install pip
 #brew install brew-pip
 ## this assumes 'python' is aliased to the version of python you want to use.
-python -m ensurepip --upgrade
-
+/usr/local/opt/python@3.9/bin/python3.9 -m pip install --upgrade pip
 # I don't know why this isn't done by default. maybe there is a good reason.
 ln -s /usr/local/bin/pip3 /usr/local/bin/pip
 
@@ -101,6 +106,9 @@ pip install sqlalchemy
 #pip install mysql-python  # Python 2 only, use mysqlclient instead
 pip install mysqlclient
 
+# necessary for Excel support in pandas
+pip install openpyxl
+
 ###############################################################################
 # Install IPython Profile
 ###############################################################################
@@ -119,16 +127,17 @@ brew install pandoc # for R Markdown
 brew install librsvg 
 brew install homebrew/cask/basictex
 
-echo "in vscode's console you will need to run: "
-echo "install.packages(\"knitr\")"
-echo "install.packages(\"rmarkdown\")"
-
-
 echo "installing jupyter"
 brew install jupyter
 
+echo "this is where we would run install_r_packages.r"
+echo "but I need to figure out how to auto-select a particular FTP server."
 
 echo "------------------------------"
 echo "Script completed."
 echo "Usage: workon py2-data for Python2"
 echo "Usage: workon py3-data for Python3"
+
+
+echo "install oh-my-zsh" # TODO: move this
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
